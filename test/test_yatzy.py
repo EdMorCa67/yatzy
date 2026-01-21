@@ -15,7 +15,7 @@ def test_scores_sum_of_all_dice():
     [
         ([4, 4, 4, 4, 4], 50),
         ([6, 6, 6, 6, 6], 50),
-        ([6, 6, 6, 6, 3], 50),
+        ([6, 6, 6, 6, 3], 0)
     ],
 )
 def test_yatzy_scores_fifty(dices, expected_result):

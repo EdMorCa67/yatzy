@@ -1,24 +1,19 @@
 class Yatzy:
 
     @staticmethod
-    def chance(d1, d2, d3, d4, d5):
-        total = 0
-        total += d1
-        total += d2
-        total += d3
-        total += d4
-        total += d5
-        return total
+    def scores_sum_of_all_dice(*dices):
+        score = sum(dices)
+        return score
 
     @staticmethod
-    def yatzy(dice):
-        counts = [0] * (len(dice) + 1)
-        for die in dice:
-            counts[die - 1] += 1
-        for i in range(len(counts)):
-            if counts[i] == 5:
-                return 50
-        return 0
+    def yatzy(dices):
+        first = dices[0]
+        for dice in dices:
+            if dice != first:
+                return 0
+        return 50
+    
+
 
     @staticmethod
     def ones(d1, d2, d3, d4, d5):
