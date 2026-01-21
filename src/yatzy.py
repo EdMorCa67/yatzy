@@ -1,11 +1,15 @@
 class Yatzy:
 
     @staticmethod
-    def scores_sum_of_all_dice(*dices):
+    # A parameter list has too many parameters 
+    # Code is duplicated
+    def chance_scores_sum_of_all_dice(*dices):
         score = sum(dices)
         return score
 
     @staticmethod
+    # A primitive data type is overloaded
+    
     def yatzy(dices):
         first = dices[0]
         for dice in dices:
@@ -14,82 +18,57 @@ class Yatzy:
         return 50
     
 
+    @staticmethod
+    # A parameter list has too many parameters
+    # Code is duplicated
+    def sum_ones(*dices):
+        ONE = 1
+        ones = sum([ONE for dice in dices if dice == ONE])
+        return ones
 
     @staticmethod
-    def ones(d1, d2, d3, d4, d5):
-        sum = 0
-        if (d1 == 1):
-            sum += 1
-        if (d2 == 1):
-            sum += 1
-        if (d3 == 1):
-            sum += 1
-        if (d4 == 1):
-            sum += 1
-        if (d5 == 1):
-            sum += 1
-
-        return sum
+    # A parameter list has too many parameters
+    # Code is duplicated
+    def sum_twos(*dices):
+        TWO = 2
+        twos = sum([TWO for dice in dices if dice == TWO])
+        return twos
 
     @staticmethod
-    def twos(d1, d2, d3, d4, d5):
-        sum = 0
-        if (d1 == 2):
-            sum += 2
-        if (d2 == 2):
-            sum += 2
-        if (d3 == 2):
-            sum += 2
-        if (d4 == 2):
-            sum += 2
-        if (d5 == 2):
-            sum += 2
-        return sum
+    # A parameter list has too many parameters
+    # Code is duplicated
+    # A variable has a poor name
+    def sum_threes(*dices):
+        THREE = 3
+        threes = sum([THREE for dice in dices if dice == THREE])
+        return threes
 
     @staticmethod
-    def threes(d1, d2, d3, d4, d5):
-        s = 0
-        if (d1 == 3):
-            s += 3
-        if (d2 == 3):
-            s += 3
-        if (d3 == 3):
-            s += 3
-        if (d4 == 3):
-            s += 3
-        if (d5 == 3):
-            s += 3
-        return s
+    # A parameter list has too many parameters
+    # A variable has a poor name
+    # Cambia de método
+    def sum_fours(*dices):
+        FOUR = 4
+        fours = sum([FOUR for dice in dices if dice == FOUR])
+        return fours
 
-    def __init__(self, d1=0, d2=0, d3=0, d4=0, _5=0):
-        self.dice = [0] * 5
-        self.dice[0] = d1
-        self.dice[1] = d2
-        self.dice[2] = d3
-        self.dice[3] = d4
-        self.dice[4] = _5
+    @staticmethod
+    # A parameter list has too many parameters
+    # A variable has a poor name
+    # Cambia de método
+    def sum_fives(*dices):
+        FIVE = 5
+        fives = sum([FIVE for dice in dices if dice == FIVE])
+        return fives
 
-    def fours(self):
-        sum = 0
-        for at in range(5):
-            if (self.dice[at] == 4):
-                sum += 4
-        return sum
-
-    def fives(self):
-        s = 0
-        i = 0
-        for i in range(len(self.dice)):
-            if (self.dice[i] == 5):
-                s = s + 5
-        return s
-
-    def sixes(self):
-        sum = 0
-        for at in range(len(self.dice)):
-            if (self.dice[at] == 6):
-                sum = sum + 6
-        return sum
+    @staticmethod
+    # A parameter list has too many parameters
+    # A variable has a poor name
+    # Cambia de método
+    def sum_sixes(*dices):
+        SIX = 6
+        sixes = sum([SIX for dice in dices if dice == SIX])
+        return sixes
 
     def score_pair(self, d1, d2, d3, d4, d5):
         counts = [0] * 6
