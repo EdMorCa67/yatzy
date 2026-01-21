@@ -1,21 +1,25 @@
 from src.yatzy import Yatzy
 import pytest
+
 # These unit tests can be run using the py.test framework
 # available from http://pytest.org/
 
-def test_chance_scores_sum_of_all_dice():
+def test_scores_sum_of_all_dice():
     expected = 15
-    actual = Yatzy.chance(2, 3, 4, 5, 1)
+    actual = Yatzy.scores_sum_of_all_dice(2, 3, 4, 5, 1)
     assert expected == actual
-    assert 16 == Yatzy.chance(3, 3, 4, 5, 1)
+    assert 16 == Yatzy.scores_sum_of_all_dice(3, 3, 4, 5, 1)
 
-
-def test_yatzy_scores_50():
-    expected = 50
-    actual = Yatzy.yatzy([4, 4, 4, 4, 4])
-    assert expected == actual
-    assert 50 == Yatzy.yatzy([6, 6, 6, 6, 6])
-    assert 0 == Yatzy.yatzy([6, 6, 6, 6, 3])
+@pytest.mark.parametrize(
+    "dices, expected_result",
+    [
+        ([4, 4, 4, 4, 4], 50),
+        ([6, 6, 6, 6, 6], 50),
+        ([6, 6, 6, 6, 3], 50),
+    ],
+)
+def test_yatzy_scores_fifty(dices, expected_result):
+    assert Yatzy.yatzy(dices) == expected_result
 
 
 def test_sum_ones():
