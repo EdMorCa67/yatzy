@@ -1,4 +1,14 @@
 class Yatzy:
+
+    # Class propierties
+    PIPS = {
+        'ONE' : 1,
+        'TWO' : 0,
+        'THREE' : 3,
+        'FOUR' : 4,
+        'FIVE' : 5,
+        'SIX' : 6,
+    }
     ZERO = 0
     FIFTY = 50
 
@@ -9,15 +19,15 @@ class Yatzy:
     def chance_scores_sum_of_all_dice(*dice):
         return sum(dice)
 
-    @staticmethod
+    @classmethod
     # A primitive data type is overloaded
     
-    def yatzy(dice):
+    def yatzy(cls, dice):
         first = dice[0]
         for die in dice:
             if die != first:
-                return Yatzy.ZERO
-        return Yatzy.FIFTY
+                return cls.ZERO
+        return cls.FIFTY
     
 
     @staticmethod
@@ -69,24 +79,24 @@ class Yatzy:
         return sum([SIX for die in dice if die == SIX])
     
 
-    @staticmethod
+    @classmethod
     # A parameter list has too many parameters
     # Code is duplicated
-    def score_pair(*dice):
+    def score_pair(cls, *dice):
         PAIR = 2
         pair_pip = list(die for die in sorted(dice) if dice.count(die) >= PAIR)
         if pair_pip != []:
             return  max(pair_pip) * PAIR
-        return Yatzy.ZERO
+        return cls.ZERO
 
-    @staticmethod
-    def score_two_pair(*dice):
+    @classmethod
+    def score_two_pair(cls, *dice):
         PAIR = 2
         pair_pip = list(die for die in sorted(dice) if dice.count(die) >= PAIR)
         if len(set(pair_pip)) == 2:
             return sum(set(pair_pip)) * PAIR
         else:
-           return Yatzy.ZERO
+           return cls.ZERO
 
     @staticmethod
     def score_three_of_a_kind(*dice):
@@ -96,24 +106,24 @@ class Yatzy:
             return  max(three_of_a_kind_pip) * THREE_OF_A_KIND
         return 0
 
-    @staticmethod
-    def score_four_of_a_kind(*dice):
+    @classmethod
+    def score_four_of_a_kind(cls, *dice):
         FOUR_OF_A_KIND = 4
         four_of_a_kind_pip = list(die for die in sorted(dice) if dice.count(die) >= FOUR_OF_A_KIND)
         if four_of_a_kind_pip != []:
             return  max(four_of_a_kind_pip) * FOUR_OF_A_KIND
-        return Yatzy.ZERO
+        return cls.ZERO
 
-    @staticmethod
-    def score_straight(*dice):
+    @classmethod
+    def score_straight(cls, *dice):
         SMALL_STRAIGHT = [1, 2, 3, 4, 5]
         LARGE_STRAIGHT = [2, 3, 4, 5, 6]
         tidy_dices = sorted(dice)
         if tidy_dices == SMALL_STRAIGHT or tidy_dices == LARGE_STRAIGHT:
             return sum(dice)
-        return Yatzy.ZERO
+        return cls.ZERO
 
-    @staticmethod
-    def score_full_house(*dice):
+    @classmethod
+    def score_full_house(cls, *dice):
         MAX_DISSTINCT_VALUES = 2
-        return sum(dice) if len(set(dice)) == MAX_DISSTINCT_VALUES else Yatzy.ZERO
+        return sum(dice) if len(set(dice)) == MAX_DISSTINCT_VALUES else cls.ZERO
