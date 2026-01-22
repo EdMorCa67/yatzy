@@ -6,16 +6,16 @@ class Yatzy:
     @staticmethod
     # A parameter list has too many parameters 
     # Code is duplicated
-    def chance_scores_sum_of_all_dice(*dices):
-        return sum(dices)
+    def chance_scores_sum_of_all_dice(*dice):
+        return sum(dice)
 
     @staticmethod
     # A primitive data type is overloaded
     
-    def yatzy(dices):
-        first = dices[0]
-        for dice in dices:
-            if dice != first:
+    def yatzy(dice):
+        first = dice[0]
+        for die in dice:
+            if die != first:
                 return Yatzy.ZERO
         return Yatzy.FIFTY
     
@@ -23,97 +23,97 @@ class Yatzy:
     @staticmethod
     # A parameter list has too many parameters
     # Code is duplicated
-    def sum_ones(*dices):
+    def sum_ones(*dice):
         ONE = 1
-        return sum([ONE for dice in dices if dice == ONE])
+        return sum([ONE for die in dice if die == ONE])
 
 
     @staticmethod
     # A parameter list has too many parameters
     # Code is duplicated
-    def sum_twos(*dices):
+    def sum_twos(*dice):
         TWO = 2
-        return sum([TWO for dice in dices if dice == TWO])
+        return sum([TWO for die in dice if die == TWO])
          
 
     @staticmethod
     # A parameter list has too many parameters
     # Code is duplicated
     # A variable has a poor name
-    def sum_threes(*dices):
+    def sum_threes(*dice):
         THREE = 3
-        return sum([THREE for dice in dices if dice == THREE])
+        return sum([THREE for die in dice if die == THREE])
 
     @staticmethod
     # A parameter list has too many parameters
     # A variable has a poor name
     # Change method
-    def sum_fours(*dices):
+    def sum_fours(*dice):
         FOUR = 4
-        return sum([FOUR for dice in dices if dice == FOUR])
+        return sum([FOUR for die in dice if die == FOUR])
 
     @staticmethod
     # A parameter list has too many parameters
     # A variable has a poor name
     # Change method
-    def sum_fives(*dices):
+    def sum_fives(*dice):
         FIVE = 5
-        return sum([FIVE for dice in dices if dice == FIVE])
+        return sum([FIVE for die in dice if die == FIVE])
 
     @staticmethod
     # A parameter list has too many parameters
     # A variable has a poor name
     # Change method
-    def sum_sixes(*dices):
+    def sum_sixes(*dice):
         SIX = 6
-        return sum([SIX for dice in dices if dice == SIX])
+        return sum([SIX for die in dice if die == SIX])
     
 
     @staticmethod
     # A parameter list has too many parameters
     # Code is duplicated
-    def score_pair(*dices):
+    def score_pair(*dice):
         PAIR = 2
-        pair_pip = list(dice for dice in sorted(dices) if dices.count(dice) >= PAIR)
+        pair_pip = list(die for die in sorted(dice) if dice.count(die) >= PAIR)
         if pair_pip != []:
             return  max(pair_pip) * PAIR
         return Yatzy.ZERO
 
     @staticmethod
-    def score_two_pair(*dices):
+    def score_two_pair(*dice):
         PAIR = 2
-        pair_pip = list(dice for dice in sorted(dices) if dices.count(dice) >= PAIR)
+        pair_pip = list(die for die in sorted(dice) if dice.count(die) >= PAIR)
         if len(set(pair_pip)) == 2:
             return sum(set(pair_pip)) * PAIR
         else:
            return Yatzy.ZERO
 
     @staticmethod
-    def score_three_of_a_kind(*dices):
+    def score_three_of_a_kind(*dice):
         THREE_OF_A_KIND = 3
-        three_of_a_kind_pip = list(dice for dice in sorted(dices) if dices.count(dice) >= THREE_OF_A_KIND)
+        three_of_a_kind_pip = list(die for die in sorted(dice) if dice.count(die) >= THREE_OF_A_KIND)
         if three_of_a_kind_pip != []:
             return  max(three_of_a_kind_pip) * THREE_OF_A_KIND
         return 0
 
     @staticmethod
-    def score_four_of_a_kind(*dices):
+    def score_four_of_a_kind(*dice):
         FOUR_OF_A_KIND = 4
-        four_of_a_kind_pip = list(dice for dice in sorted(dices) if dices.count(dice) >= FOUR_OF_A_KIND)
+        four_of_a_kind_pip = list(die for die in sorted(dice) if dice.count(die) >= FOUR_OF_A_KIND)
         if four_of_a_kind_pip != []:
             return  max(four_of_a_kind_pip) * FOUR_OF_A_KIND
         return Yatzy.ZERO
 
     @staticmethod
-    def score_straight(*dices):
+    def score_straight(*dice):
         SMALL_STRAIGHT = [1, 2, 3, 4, 5]
         LARGE_STRAIGHT = [2, 3, 4, 5, 6]
-        tidy_dices = sorted(dices)
+        tidy_dices = sorted(dice)
         if tidy_dices == SMALL_STRAIGHT or tidy_dices == LARGE_STRAIGHT:
-            return sum(dices)
+            return sum(dice)
         return Yatzy.ZERO
 
     @staticmethod
-    def score_full_house(*dices):
+    def score_full_house(*dice):
         MAX_DISSTINCT_VALUES = 2
-        return sum(dices) if len(set(dices)) == MAX_DISSTINCT_VALUES else Yatzy.ZERO
+        return sum(dice) if len(set(dice)) == MAX_DISSTINCT_VALUES else Yatzy.ZERO
