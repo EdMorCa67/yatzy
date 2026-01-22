@@ -3,7 +3,7 @@ class Yatzy:
     # Class propierties
     PIPS = {
         'ONE' : 1,
-        'TWO' : 0,
+        'TWO' : 2,
         'THREE' : 3,
         'FOUR' : 4,
         'FIVE' : 5,
@@ -30,52 +30,52 @@ class Yatzy:
         return cls.FIFTY
     
 
-    @staticmethod
+    @classmethod
     # A parameter list has too many parameters
     # Code is duplicated
-    def sum_ones(*dice):
-        ONE = 1
+    def sum_ones(cls, *dice):
+        ONE = cls.PIPS['ONE']
         return sum([ONE for die in dice if die == ONE])
 
 
-    @staticmethod
+    @classmethod
     # A parameter list has too many parameters
     # Code is duplicated
-    def sum_twos(*dice):
-        TWO = 2
+    def sum_twos(cls, *dice):
+        TWO = cls.PIPS['TWO']
         return sum([TWO for die in dice if die == TWO])
          
 
-    @staticmethod
+    @classmethod
     # A parameter list has too many parameters
     # Code is duplicated
     # A variable has a poor name
-    def sum_threes(*dice):
-        THREE = 3
+    def sum_threes(cls, *dice):
+        THREE = cls.PIPS['THREE']
         return sum([THREE for die in dice if die == THREE])
 
-    @staticmethod
+    @classmethod
     # A parameter list has too many parameters
     # A variable has a poor name
     # Change method
-    def sum_fours(*dice):
-        FOUR = 4
+    def sum_fours(cls, *dice):
+        FOUR = cls.PIPS['FOUR']
         return sum([FOUR for die in dice if die == FOUR])
 
-    @staticmethod
+    @classmethod
     # A parameter list has too many parameters
     # A variable has a poor name
     # Change method
-    def sum_fives(*dice):
-        FIVE = 5
+    def sum_fives(cls, *dice):
+        FIVE = cls.PIPS['FIVE']
         return sum([FIVE for die in dice if die == FIVE])
 
-    @staticmethod
+    @classmethod
     # A parameter list has too many parameters
     # A variable has a poor name
     # Change method
-    def sum_sixes(*dice):
-        SIX = 6
+    def sum_sixes(cls, *dice):
+        SIX = cls.PIPS['SIX']
         return sum([SIX for die in dice if die == SIX])
     
 
