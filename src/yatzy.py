@@ -116,9 +116,9 @@ class Yatzy:
 
     @classmethod
     def score_straight(cls, *dice):
-        SMALL_STRAIGHT = [1, 2, 3, 4, 5]
-        LARGE_STRAIGHT = [2, 3, 4, 5, 6]
-        tidy_dices = sorted(dice)
+        SMALL_STRAIGHT = set(list(cls.PIPS.values())) - {cls.PIPS['SIX']}
+        LARGE_STRAIGHT = set(list(cls.PIPS.values())) - {cls.PIPS['ONE']}
+        tidy_dices = set(dice)
         if tidy_dices == SMALL_STRAIGHT or tidy_dices == LARGE_STRAIGHT:
             return sum(dice)
         return cls.ZERO
