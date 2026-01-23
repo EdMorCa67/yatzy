@@ -4,10 +4,17 @@ import pytest
 # These unit tests can be run using the py.test framework
 # available from http://pytest.org/
 
-def test_chance_scores_sum_of_all_dice():
+@pytest.mark.parametrize(
+    "dice, expected_result",
+    [
+        ([2, 3, 4, 5, 1], 15),
+        ([3, 3, 4, 5, 1], 16),
+    ],
+)
 
-    assert Yatzy.chance(2, 3, 4, 5, 1) == 15 
-    assert Yatzy.chance(3, 3, 4, 5, 1) == 16 
+def test_chance_scores_sum_of_all_dice(dice, expected_result):
+    assert Yatzy.chance(*dice) == expected_result 
+
 
 @pytest.mark.parametrize(
     "dice, expected_result",
