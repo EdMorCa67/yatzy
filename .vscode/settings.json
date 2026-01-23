@@ -1,7 +1,8 @@
 {
     "conventionalCommits.scopes": [
         "tests",
-        "Yatzy"
+        "Yatzy",
+        "Pips"
     ],
     "python.testing.unittestArgs": [
         "-v",
