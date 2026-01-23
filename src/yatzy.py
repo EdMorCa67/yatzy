@@ -17,11 +17,10 @@ class Yatzy:
     @classmethod
     # A primitive data type is overloaded
     def yatzy(cls, dice):
-        first = dice[0]
-        for die in dice:
-            if die != first:
-                return cls.ZERO
-        return cls.FIFTY
+        ALL_THE_SAME = 1
+        if len(set(dice)) == ALL_THE_SAME:
+            return cls.FIFTY
+        return cls.ZERO
     
 
     @classmethod
