@@ -14,6 +14,7 @@ class Yatzy:
     def chance(*dice):
         return sum(dice)
 
+
     @classmethod
     # A primitive data type is overloaded
     def yatzy(cls, dice):
@@ -113,7 +114,7 @@ class Yatzy:
         SMALL_STRAIGHT = Pips.minus(Pips.SIX)
         tidy_dices = set(dice)
         if tidy_dices == SMALL_STRAIGHT:
-            return sum(dice)
+            return cls.chance(*dice)
         return cls.ZERO
     
 
@@ -122,9 +123,9 @@ class Yatzy:
         LARGE_STRAIGHT = Pips.minus(Pips.ONE)
         tidy_dices = set(dice)
         if tidy_dices == LARGE_STRAIGHT:
-            return sum(dice)
+            return cls.chance(*dice)
         return cls.ZERO
-
+    
 
     @classmethod
     def fullHouse(cls, *dice):
