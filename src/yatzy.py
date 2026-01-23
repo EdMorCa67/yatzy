@@ -24,18 +24,25 @@ class Yatzy:
         return cls.ZERO
     
 
+    @staticmethod
+    def sum_dice_score(dice, pip):
+        return sum([pip for die in dice if die == pip])
+    
+
     @classmethod
     # A parameter list has too many parameters
     # Code is duplicated
     def ones(cls, *dice):
-        return sum([Pips.ONE.value for die in dice if die == Pips.ONE.value])
+        PIP = Pips.ONE.value
+        return cls.sum_dice_score(dice, PIP)
 
 
     @classmethod
     # A parameter list has too many parameters
     # Code is duplicated
     def twos(cls, *dice):
-        return sum([Pips.TWO.value for die in dice if die == Pips.TWO.value])
+        PIP = Pips.TWO.value
+        return cls.sum_dice_score(dice, PIP)
          
 
     @classmethod
@@ -43,7 +50,8 @@ class Yatzy:
     # Code is duplicated
     # A variable has a poor name
     def threes(cls, *dice):
-        return sum([Pips.THREE.value for die in dice if die == Pips.THREE.value])
+        PIP = Pips.THREE.value
+        return cls.sum_dice_score(dice, PIP)
 
 
     @classmethod
@@ -51,7 +59,8 @@ class Yatzy:
     # A variable has a poor name
     # Change method
     def fours(cls, *dice):
-        return sum([Pips.FOUR.value for die in dice if die == Pips.FOUR.value])
+        PIP = Pips.FOUR.value
+        return cls.sum_dice_score(dice, PIP)
 
 
     @classmethod
@@ -59,15 +68,16 @@ class Yatzy:
     # A variable has a poor name
     # Change method
     def fives(cls, *dice):
-        return sum([Pips.FIVE.value for die in dice if die == Pips.FIVE.value])
-
+        PIP = Pips.FIVE.value
+        return cls.sum_dice_score(dice, PIP)
 
     @classmethod
     # A parameter list has too many parameters
     # A variable has a poor name
     # Change method
     def sixes(cls, *dice):
-        return sum([Pips.SIX.value for die in dice if die == Pips.SIX.value])
+        PIP = Pips.SIX.value
+        return cls.sum_dice_score(dice, PIP)
     
 
     @classmethod
