@@ -1,14 +1,9 @@
+from src.pips import Pips
+
 class Yatzy:
 
     # Class propierties
-    PIPS = {
-        'ONE' : 1,
-        'TWO' : 2,
-        'THREE' : 3,
-        'FOUR' : 4,
-        'FIVE' : 5,
-        'SIX' : 6,
-    }
+
     ZERO = 0
     FIFTY = 50
 
@@ -21,7 +16,6 @@ class Yatzy:
 
     @classmethod
     # A primitive data type is overloaded
-    
     def yatzy(cls, dice):
         first = dice[0]
         for die in dice:
@@ -34,16 +28,14 @@ class Yatzy:
     # A parameter list has too many parameters
     # Code is duplicated
     def ones(cls, *dice):
-        ONE = cls.PIPS['ONE']
-        return sum([ONE for die in dice if die == ONE])
+        return sum([Pips.ONE.value for die in dice if die == Pips.ONE.value])
 
 
     @classmethod
     # A parameter list has too many parameters
     # Code is duplicated
     def twos(cls, *dice):
-        TWO = cls.PIPS['TWO']
-        return sum([TWO for die in dice if die == TWO])
+        return sum([Pips.TWO.value for die in dice if die == Pips.TWO.value])
          
 
     @classmethod
@@ -51,32 +43,31 @@ class Yatzy:
     # Code is duplicated
     # A variable has a poor name
     def threes(cls, *dice):
-        THREE = cls.PIPS['THREE']
-        return sum([THREE for die in dice if die == THREE])
+        return sum([Pips.THREE.value for die in dice if die == Pips.THREE.value])
+
 
     @classmethod
     # A parameter list has too many parameters
     # A variable has a poor name
     # Change method
     def fours(cls, *dice):
-        FOUR = cls.PIPS['FOUR']
-        return sum([FOUR for die in dice if die == FOUR])
+        return sum([Pips.FOUR.value for die in dice if die == Pips.FOUR.value])
+
 
     @classmethod
     # A parameter list has too many parameters
     # A variable has a poor name
     # Change method
     def fives(cls, *dice):
-        FIVE = cls.PIPS['FIVE']
-        return sum([FIVE for die in dice if die == FIVE])
+        return sum([Pips.FIVE.value for die in dice if die == Pips.FIVE.value])
+
 
     @classmethod
     # A parameter list has too many parameters
     # A variable has a poor name
     # Change method
     def sixes(cls, *dice):
-        SIX = cls.PIPS['SIX']
-        return sum([SIX for die in dice if die == SIX])
+        return sum([Pips.SIX.value for die in dice if die == Pips.SIX.value])
     
 
     @classmethod
@@ -89,6 +80,7 @@ class Yatzy:
             return  max(pair_pip) * PAIR
         return cls.ZERO
 
+
     @classmethod
     def two_pair(cls, *dice):
         PAIR = 2
@@ -98,13 +90,15 @@ class Yatzy:
         else:
            return cls.ZERO
 
-    @staticmethod
-    def three_of_a_kind(*dice):
+
+    @classmethod
+    def three_of_a_kind(cls, *dice):
         THREE_OF_A_KIND = 3
         three_of_a_kind_pip = list(die for die in sorted(dice) if dice.count(die) >= THREE_OF_A_KIND)
         if three_of_a_kind_pip != []:
             return  max(three_of_a_kind_pip) * THREE_OF_A_KIND
-        return 0
+        return cls.ZERO
+
 
     @classmethod
     def four_of_a_kind(cls, *dice):
@@ -114,23 +108,26 @@ class Yatzy:
             return  max(four_of_a_kind_pip) * FOUR_OF_A_KIND
         return cls.ZERO
     
+    
     @classmethod
     def smallStraight(cls, *dice):
-        SMALL_STRAIGHT = set(list(cls.PIPS.values())) - {cls.PIPS['SIX']}
+        SMALL_STRAIGHT = Pips.minus(Pips.SIX)
         tidy_dices = set(dice)
         if tidy_dices == SMALL_STRAIGHT:
             return sum(dice)
         return cls.ZERO
     
+
     @classmethod
     def largeStraight(cls, *dice):
-        LARGE_STRAIGHT = set(list(cls.PIPS.values())) - {cls.PIPS['ONE']}
+        LARGE_STRAIGHT = Pips.minus(Pips.ONE)
         tidy_dices = set(dice)
         if tidy_dices == LARGE_STRAIGHT:
             return sum(dice)
         return cls.ZERO
 
+
     @classmethod
     def fullHouse(cls, *dice):
-        MAX_DISSTINCT_VALUES = 2
-        return sum(dice) if len(set(dice)) == MAX_DISSTINCT_VALUES else cls.ZERO
+        MAX_DISTINCT_VALUES = 2
+        return sum(dice) if len(set(dice)) == MAX_DISTINCT_VALUES else cls.ZERO
