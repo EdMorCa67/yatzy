@@ -1,4 +1,4 @@
-from src.pips import Pips
+from src.pips import Pips, Combinations
 
 class Yatzy:
 
@@ -18,7 +18,7 @@ class Yatzy:
     @classmethod
     # A primitive data type is overloaded
     def yatzy(cls, dice):
-        ALL_THE_SAME = 1
+        ALL_THE_SAME = Combinations.ALL_THE_SAME.value
         if len(set(dice)) == ALL_THE_SAME:
             return cls.FIFTY
         return cls.ZERO
@@ -84,26 +84,25 @@ class Yatzy:
     # A parameter list has too many parameters
     # Code is duplicated
     def score_pair(cls, *dice):
-        PAIR = 2
-        pair_pip = list(die for die in sorted(dice) if dice.count(die) >= PAIR)
-        if pair_pip != []:
-            return  max(pair_pip) * PAIR
+        PAIR = Combinations.PAIR.value
+        pip_pair = list(die for die in sorted(dice) if dice.count(die) >= PAIR)
+        if pip_pair != []:
+            return  max(pip_pair) * PAIR
         return cls.ZERO
 
 
     @classmethod
     def two_pair(cls, *dice):
-        PAIR = 2
-        pair_pip = list(die for die in sorted(dice) if dice.count(die) >= PAIR)
-        if len(set(pair_pip)) == 2:
-            return sum(set(pair_pip)) * PAIR
-        else:
-           return cls.ZERO
+        TWO_PAIR = Combinations.TWO_PAIR.value
+        pip_pairs = set(list(die for die in sorted(dice) if dice.count(die) >= TWO_PAIR))
+        if len(pip_pairs) == TWO_PAIR:
+            return cls.chance(*pip_pairs) * TWO_PAIR
+        return cls.ZERO
 
 
     @classmethod
     def three_of_a_kind(cls, *dice):
-        THREE_OF_A_KIND = 3
+        THREE_OF_A_KIND = Combinations.THREE_OF_A_KIND.value
         three_of_a_kind_pip = list(die for die in sorted(dice) if dice.count(die) >= THREE_OF_A_KIND)
         if three_of_a_kind_pip != []:
             return  max(three_of_a_kind_pip) * THREE_OF_A_KIND
@@ -112,7 +111,7 @@ class Yatzy:
 
     @classmethod
     def four_of_a_kind(cls, *dice):
-        FOUR_OF_A_KIND = 4
+        FOUR_OF_A_KIND = Combinations.FOUR_OF_A_KIND.value
         four_of_a_kind_pip = list(die for die in sorted(dice) if dice.count(die) >= FOUR_OF_A_KIND)
         if four_of_a_kind_pip != []:
             return  max(four_of_a_kind_pip) * FOUR_OF_A_KIND
@@ -139,5 +138,5 @@ class Yatzy:
 
     @classmethod
     def fullHouse(cls, *dice):
-        MAX_DISTINCT_VALUES = 2
-        return sum(dice) if len(set(dice)) == MAX_DISTINCT_VALUES else cls.ZERO
+        MAX_DISTINCT_VALUES = Combinations.FULL_HOUSE_DIFERENT_VALUES.value
+        return cls.chance(*dice) if len(set(dice)) == MAX_DISTINCT_VALUES else cls.ZERO
