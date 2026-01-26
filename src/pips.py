@@ -37,7 +37,7 @@ class Combinations(Enum):
 if __name__ == "__main__":
     print(list(Pips))
     print(Pips(1))
-    print(Pips["ONE"])
+    print(Pips["ONE"]) 
     print(Pips.ONE)
     print(Pips.ONE.name)
     print(Pips.ONE.value)
